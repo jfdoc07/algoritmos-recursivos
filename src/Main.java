@@ -18,6 +18,8 @@ public class Main {
         System.out.println(factorial);
         System.out.println(obj.esPar(5));
         System.out.println(obj.esImpar(3));
+        int[] arregloPrueba = {1, 2, 3, 4};
+        System.out.println(obj.sumaArreglo(arregloPrueba, 0));
     }
 
     /*Función de recursión directa*/
@@ -44,4 +46,18 @@ public class Main {
     }
     //Prueba en el segundo computador
 
+    public int sumaArreglo(int arr[], int i) {
+        if (i == arr.length) {
+            return 0;
+        } else {
+            return arr[i] + sumaArreglo(arr, i + 1);
+        }
+    }
+
+    public int mayorValor(int arr[], int i, int j) {
+        if (arr.length == 1) {
+            return arr[i];
+        }
+        
+    }
 }
