@@ -20,6 +20,8 @@ public class Main {
         System.out.println(obj.esImpar(3));
         int[] arregloPrueba = {1, 2, 3, 4};
         System.out.println(obj.sumaArreglo(arregloPrueba, 0));
+        System.out.println(obj.busquedaBinaria(arregloPrueba, 2, 0, arregloPrueba.length));
+        System.out.println(obj.mayorValor(arregloPrueba, arregloPrueba.length));
     }
 
     /*Función de recursión directa*/
@@ -54,10 +56,34 @@ public class Main {
         }
     }
 
-    public int mayorValor(int arr[], int i, int j) {
-        if (arr.length == 1) {
-            return arr[i];
+    /*Función recursiva para buscar el mayor valor de un arreglo*/
+    public int mayorValor(int arr[], int n) {
+        if (n == 1) {
+            return arr[0];
         }
-        
+
+        int mayorTemporal = mayorValor(arr, n - 1);
+
+        if (arr[n - 1] > mayorTemporal) {
+            return arr[n - 1];
+        } else {
+            return mayorTemporal;
+        }
+    }
+
+    /*Función recursiva de búsqueda binaria*/
+    public int busquedaBinaria(int arr[], int valorbuscado, int inicio, int fin) {
+        int medio = (inicio + fin) / 2;
+        if (inicio > fin) {
+            return -1;//Error, no encontrado.
+        }
+        if (arr[medio] == valorbuscado) {
+            return medio;
+        } else if (arr[medio] < valorbuscado) {
+            return busquedaBinaria(arr, valorbuscado, medio + 1, fin);
+//Que inicio sea medio + 1.
+        }
+        return busquedaBinaria(arr, valorbuscado, inicio, medio - 1);
+//Que final sea medio - 1. Este caso solo se activa si arr[medio] > valorbuscado.
     }
 }
